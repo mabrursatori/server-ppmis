@@ -1,5 +1,6 @@
 const express = require("express");
 const bodyParser = require("body-parser");
+require('dotenv').config();
 
 const app = express();
 
@@ -16,7 +17,9 @@ app.get("/", (req, res) => {
 
 require("./app/routes/customer.routes.js")(app);
 
+const port = process.env.PORT;
+
 // set port, listen for requests
-app.listen(3000, () => {
-  console.log("Server is running on port 3000.");
+app.listen(port, () => {
+  console.log(`Server is running on port ${port}.`);
 });
