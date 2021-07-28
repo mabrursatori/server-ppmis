@@ -45,7 +45,6 @@ Customer.getAll = result => {
       result(null, err);
       return;
     }
-
     console.log("customers: ", res);
     result(null, res);
   });
@@ -61,7 +60,6 @@ Customer.updateById = (id, customer, result) => {
         result(null, err);
         return;
       }
-
       if (res.affectedRows == 0) {
         // not found Customer with the id
         result({ kind: "not_found" }, null);
