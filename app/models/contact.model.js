@@ -7,4 +7,25 @@ const Contact = function(contact) {
   this.label = contact.label;
 };
 
+Contact.updateById = (id, contact, result) => {
+    sql.query(
+      "UPDATE contacts SET name = ?, url = ?, label = ? WHERE id = ?",
+      [contact.name, contact.url, contact.label, id],
+      (err, res) => {
+        if (err) {
+          console.log("error: ", err);
+          result(null, err);
+          return;
+        }
+        if (res.affectedRows == 0) {
+          // not found contact with the id
+          result({ kind: "not_found" }, null);
+          return;
+        }
+        console.log("updated contact: ", { id: id, ...contact });
+        result(null, { id: id, ...contact });
+      }
+    );
+  };
+
 module.exports = Contact;

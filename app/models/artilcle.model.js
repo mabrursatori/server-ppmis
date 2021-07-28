@@ -40,7 +40,7 @@ Article.create = (newArticle, result) => {
   };
 
   Article.getAll = result => {
-    sql.query("SELECT * FROM articles", (err, res) => {
+    sql.query("SELECT * FROM articles ORDER BY DATE DESC", (err, res) => {
       if (err) {
         console.log("error: ", err);
         result(null, err);
