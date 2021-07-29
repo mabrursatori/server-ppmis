@@ -1,4 +1,5 @@
 const Customer = require("../models/customer.model.js");
+const sql = require("../models/db");
 
 // Create and Save a new Customer
 exports.create = (req, res) => {
@@ -34,12 +35,16 @@ exports.create = (req, res) => {
 // Retrieve all Customers from the database.
 exports.findAll = (req, res) => {
     Customer.getAll((err, data) => {
-      if (err)
-      return  res.status(500).send({
-          message:
-            err.message || "Some error occurred while retrieving customers."
-        });
-      else return res.send(data);
+      if (err){
+        return  res.status(500).send({
+            message:
+              err.message || "Some error occurred while retrieving customers."
+          });
+      }
+      else{
+       // sql.end();
+        return res.send(data);
+      } 
     });
   };
 
