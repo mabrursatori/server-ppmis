@@ -7,6 +7,18 @@ const Contact = function(contact) {
   this.label = contact.label;
 };
 
+Contact.getAll = result => {
+  sql.query("SELECT * FROM contacts", (err, res) => {
+    if (err) {
+      console.log("error: ", err);
+      result(null, err);
+      return;
+    }
+    console.log("contacts: ", res);
+    result(null, res);
+  });
+};
+
 Contact.updateById = (id, contact, result) => {
     sql.query(
       "UPDATE contacts SET name = ?, url = ?, label = ? WHERE id = ?",

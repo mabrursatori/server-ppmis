@@ -38,7 +38,7 @@ Slideshow.create = (newSlideshow, result) => {
   };
 
   Slideshow.getAll = result => {
-    sql.query("SELECT * FROM slideshow ORDER BY number DESC", (err, res) => {
+    sql.query("SELECT * FROM slideshow ORDER BY number", (err, res) => {
       if (err) {
         console.log("error: ", err);
         result(null, err);

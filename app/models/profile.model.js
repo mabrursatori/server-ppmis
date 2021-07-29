@@ -10,6 +10,21 @@ const Profile = function(profile) {
   this.isLogo = profile.isLogo;
 };
 
+Profile.get = result => {
+  sql.query("SELECT * FROM profile", (err, res) => {
+    if (err) {
+     // sql.end();
+      console.log("error: ", err);
+      result(null, err);
+      return;
+    }
+    console.log("profile: ", res);
+  //  sql.end();
+    result(null, res[0]);
+    return;
+  })
+};
+
 Profile.updateById = (id, profile, result) => {
     sql.query(
       "UPDATE profile SET imageLogo = ?, registration = ?, titleHistory = ?, imageHistory = ?, contentHistory = ?, isLogo = ? WHERE id = ?",

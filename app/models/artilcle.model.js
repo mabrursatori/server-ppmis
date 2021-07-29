@@ -40,7 +40,7 @@ Article.create = (newArticle, result) => {
   };
 
   Article.findByType = (type, result) => {
-    sql.query(`SELECT * FROM articles WHERE type = ${type}`, (err, res) => {
+    sql.query(`SELECT * FROM articles WHERE type = '${type}'`, (err, res) => {
       if (err) {
         console.log("error: ", err);
         result(err, null);
@@ -58,7 +58,7 @@ Article.create = (newArticle, result) => {
   };
 
   Article.getAll = result => {
-    sql.query("SELECT * FROM articles ORDER BY DATE DESC", (err, res) => {
+    sql.query("SELECT * FROM articles ORDER BY date DESC", (err, res) => {
       if (err) {
         console.log("error: ", err);
         result(null, err);

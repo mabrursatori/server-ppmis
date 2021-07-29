@@ -1,5 +1,5 @@
 const Customer = require("../models/customer.model.js");
-const sql = require("../models/db");
+
 
 // Create and Save a new Customer
 exports.create = (req, res) => {
