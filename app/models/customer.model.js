@@ -40,13 +40,16 @@ Customer.findById = (customerId, result) => {
 Customer.getAll = result => {
   sql.query("SELECT * FROM customers", (err, res) => {
     if (err) {
+      sql.end();
       console.log("error: ", err);
       result(null, err);
       return;
     }
     console.log("customers: ", res);
+    sql.end();
     result(null, res);
-  });
+    return;
+  })
 };
 
 Customer.updateById = (id, customer, result) => {

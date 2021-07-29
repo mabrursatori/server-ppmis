@@ -15,8 +15,6 @@ connection.connect(error => {
   console.log("Successfully connected to the database.");
 });
 
-setInterval(function () {
-  connection.query('SELECT * FROM customers');
-}, 5000);
+//connection.end();
 
 module.exports = connection;
