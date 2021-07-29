@@ -13,7 +13,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 // simple route
 app.get("/", (req, res) => {
   try {
-   return res.json({ message: "Welcome to bezkoder application." });
+   return res.json({ message: "API PP.MIS created by Mabrur" });
 }
 catch (error) {
  return res.status(500).send({message: "Try again"})

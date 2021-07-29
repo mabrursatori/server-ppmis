@@ -39,6 +39,24 @@ Article.create = (newArticle, result) => {
     });
   };
 
+  Article.findByType = (type, result) => {
+    sql.query(`SELECT * FROM articles WHERE type = ${type}`, (err, res) => {
+      if (err) {
+        console.log("error: ", err);
+        result(err, null);
+        return;
+      }
+      if (res.length) {
+        console.log("found Article: ", res[0]);
+        result(null, res);
+        return;
+      }
+      // not found Article with the id
+      result({ kind: "not_found" }, null);
+      return
+    });
+  };
+
   Article.getAll = result => {
     sql.query("SELECT * FROM articles ORDER BY DATE DESC", (err, res) => {
       if (err) {
