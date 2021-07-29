@@ -23,7 +23,7 @@ catch (error) {
 
  require("./app/routes/customer.routes.js")(app);
 
-const port = process.env.PORT || 5000;
+ const port = process.env.PORT || 5000;
 
 // set port, listen for requests
 app.listen(port, () => {
