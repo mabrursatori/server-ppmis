@@ -33,8 +33,6 @@ exports.create = (req, res) => {
 
 // Retrieve all Customers from the database.
 exports.findAll = (req, res) => {
-  
-
     Customer.getAll((err, data) => {
       if (err)
       return  res.status(500).send({

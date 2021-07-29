@@ -21,7 +21,7 @@ catch (error) {
   
 });
 
-// require("./app/routes/customer.routes.js")(app);
+ require("./app/routes/customer.routes.js")(app);
 
 const port = process.env.PORT || 5000;
 
