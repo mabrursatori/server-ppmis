@@ -15,7 +15,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 
 app.use('/public', express.static(__dirname + "/public"));
 // use it before all route definitions
-app.use(cors({origin: 'https://ppmis.herokuapp.com/'}));
+app.use(cors({origin: 'https://ppmis.herokuapp.com'}));
 
 // simple route
 app.get("/", (req, res) => {
