@@ -12,7 +12,13 @@ app.use(bodyParser.urlencoded({ extended: true }));
 
 // simple route
 app.get("/", (req, res) => {
-  res.json({ message: "Welcome to bezkoder application." });
+  try {
+   return res.json({ message: "Welcome to bezkoder application." });
+}
+catch (error) {
+ return res.status(500).send({message: "Try again"})
+}
+  
 });
 
  require("./app/routes/customer.routes.js")(app);

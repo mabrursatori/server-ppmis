@@ -2,32 +2,39 @@ const Customer = require("../models/customer.model.js");
 
 // Create and Save a new Customer
 exports.create = (req, res) => {
-    // Validate request
+  try{
     if (!req.body) {
-    return  res.status(400).send({
-        message: "Content can not be empty!"
-      });
-    }
-  
-    // Create a Customer
-    const customer = new Customer({
-      email: req.body.email,
-      name: req.body.name
-    });
-  
-    // Save Customer in the database
-    Customer.create(customer, (err, data) => {
-      if (err)
-       return res.status(500).send({
-          message:
-            err.message || "Some error occurred while creating the Customer."
+      return  res.status(400).send({
+          message: "Content can not be empty!"
         });
-      else return res.send(data);
-    });
+      }
+    
+      // Create a Customer
+      const customer = new Customer({
+        email: req.body.email,
+        name: req.body.name
+      });
+    
+      // Save Customer in the database
+      Customer.create(customer, (err, data) => {
+        if (err)
+         return res.status(500).send({
+            message:
+              err.message || "Some error occurred while creating the Customer."
+          });
+        else return res.send(data);
+      });
+  }catch(error){
+      return res.status(500).send({message: "Try again"})
+  }
+    // Validate request
+    
   };
 
 // Retrieve all Customers from the database.
 exports.findAll = (req, res) => {
+  
+
     Customer.getAll((err, data) => {
       if (err)
       return  res.status(500).send({
