@@ -44,6 +44,8 @@ catch (error) {
 
  require("./app/routes/customer.routes.js")(app);
  require("./app/routes/public.routes.js")(app);
+ require("./app/routes/dashboard.routes.js")(app);
+ require("./app/routes/slideshow.routes.js")(app);
 
  const port = process.env.PORT || 5000;
 

@@ -337,4 +337,6 @@ exports.type = (req, res) => {
          // return res.send(biografi);
       }) 
 }
+
+
    
