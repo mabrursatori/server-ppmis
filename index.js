@@ -15,7 +15,20 @@ app.use(bodyParser.urlencoded({ extended: true }));
 
 app.use('/public', express.static(__dirname + "/public"));
 // use it before all route definitions
-app.use(cors({origin: 'https://ppmis.herokuapp.com'}));
+//app.use(cors({origin: 'http://localhost:4200'}));
+
+var whitelist = ['http://localhost:4200', 'https://ppmis.herokuapp.com']
+var corsOptions = {
+  origin: function (origin, callback) {
+    if (whitelist.indexOf(origin) !== -1) {
+      callback(null, true)
+    } else {
+      callback(new Error('Not allowed by CORS'))
+    }
+  }
+}
+
+app.use(cors(corsOptions))
 
 // simple route
 app.get("/", (req, res) => {
