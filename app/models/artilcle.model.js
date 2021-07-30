@@ -56,6 +56,23 @@ Article.create = (newArticle, result) => {
       return
     });
   };
+  Article.findByKeyword = (keyword, result) => {
+    sql.query(`SELECT * FROM articles WHERE title LIKE '%${keyword}%'`, (err, res) => {
+      if (err) {
+        console.log("errorr: ", err);
+        result(err, null);
+        return;
+      }
+      if (res.length) {
+        console.log("found Article: ", res);
+        result(null, res);
+        return;
+      }
+      // not found Article with the id
+      result(null, []);
+      return
+    });
+  };
 
   Article.getAll = result => {
     sql.query("SELECT * FROM articles ORDER BY date DESC", (err, res) => {

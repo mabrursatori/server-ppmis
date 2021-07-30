@@ -2,9 +2,10 @@ module.exports = app => {
     const public = require("../controllers/public.controller");
   
     // Create a new Customer
-    app.get("/navbar", public.navbar);
     app.get("/home", public.home);
-    app.get("/footer", public.footer);
-  
+    app.get("/history", public.history);
+    app.get("/home/:articleId", public.article);
+    app.get("/home/search/:keyword", public.search);
+    app.get("/home/type/:type", public.type);
     
   };
