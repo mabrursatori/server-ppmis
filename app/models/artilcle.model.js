@@ -89,7 +89,7 @@ Article.create = (newArticle, result) => {
   Article.updateById = (id, article, result) => {
     sql.query(
       "UPDATE articles SET title = ?, image = ?, caption = ?, date = ?, content = ?, type = ? WHERE id = ?",
-      [article.title, article.image, article.caption, article.date, article.content, article.type, article. id],
+      [article.title, article.image, article.caption, article.date, article.content, article.type, id],
       (err, res) => {
         if (err) {
           console.log("error: ", err);

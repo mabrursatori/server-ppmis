@@ -37,8 +37,25 @@ User.create = (newUser, result) => {
     });
   };
 
+  User.login = (username, result) => {
+    sql.query(`SELECT * FROM users WHERE username = '${username}'`, (err, res) => {
+      if (err) {
+        console.log("error: ", err);
+        result(err, null);
+        return;
+      }
+  
+      if (res.length) {
+        result(null, res[0]);
+        return;
+      }
+      // not found User with the id
+      result({ kind: "not_found" }, null);
+    });
+  };
+
   User.getAll = result => {
-    sql.query("SELECT * FROM users", (err, res) => {
+    sql.query("SELECT * FROM users WHERE role != 'ADMIN'", (err, res) => {
       if (err) {
         console.log("error: ", err);
         result(null, err);
@@ -64,8 +81,8 @@ User.create = (newUser, result) => {
           result({ kind: "not_found" }, null);
           return;
         }
-        console.log("updated user: ", { id: id, ...customer });
-        result(null, { id: id, ...customer });
+        console.log("updated user: ", { id: id, ...user });
+        result(null, { id: id, ...user });
       }
     );
   };

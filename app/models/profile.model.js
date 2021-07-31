@@ -20,7 +20,7 @@ Profile.get = result => {
     }
     console.log("profile: ", res);
   //  sql.end();
-    result(null, res[0]);
+    result(null, res);
     return;
   })
 };

@@ -75,7 +75,7 @@ exports.home = (req, res) => {
                       });
                   }
                   else{
-                    profile = data;
+                    profile = data[0];
 
                     Slideshow.getAll((err, data) => {
                         if (err){
