@@ -202,7 +202,7 @@ exports.article = (req, res) => {
                       });
                   }
                   else{
-                    profile = data;
+                    profile = data[0];
                     Contact.getAll((err, data) => {
                         if (err){
                             return  res.status(500).send({
@@ -262,7 +262,7 @@ exports.search = (req, res) => {
                               });
                           }
                           else{
-                            profile = data;
+                            profile = data[0];
                             Contact.getAll((err, data) => {
                                 if (err){
                                     return  res.status(500).send({
@@ -317,7 +317,7 @@ exports.type = (req, res) => {
                       });
                   }
                   else{
-                    profile = data;
+                    profile = data[0];
                     Contact.getAll((err, data) => {
                         if (err){
                             return  res.status(500).send({
